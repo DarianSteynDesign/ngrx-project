@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import {cartProductFeatureKey, reducer} from './reducers/cart-product.reducer';
+import { ProductModule } from './components/product-catalog/product-catalog/cart-product.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,7 @@ import {cartProductFeatureKey, reducer} from './reducers/cart-product.reducer';
   imports: [
     BrowserModule,
     StoreModule.forRoot(reducers, { metaReducers }),
-    StoreModule.forFeature(cartProductFeatureKey, reducer)
+    ProductModule
   ],
   providers: [],
   bootstrap: [AppComponent]
