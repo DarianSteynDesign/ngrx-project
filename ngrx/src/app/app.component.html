@@ -1,12 +1,16 @@
-<h4>List of Customers</h4>
+<h4>List of products</h4>
 
-<div *ngFor="let customer of customers$ | async; let i=index">
-  <span >{{i+1}}.</span> {{customer.name}}
+<div *ngFor="let products of products$ | async; let i=index">
+  <span >{{i+1}}.</span> {{products.name}}
 </div>
 
-<h4>Add New Customer</h4>
+<h4>Add New product</h4>
 <input #box >
-<button (click)="addCustomer(box.value)">Add</button>
+<button (click)="addProduct(box.value)">Add</button>
+
+<h4>Remove New product</h4>
+<input #removebox >
+<button (click)="removeProduct(removebox.value)">Remove</button>
 
 
 

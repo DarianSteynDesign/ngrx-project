@@ -3,8 +3,8 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CartProduct } from './models/cart-product';
 import { CartProductState } from './reducers/cart-product.reducer';
-import { selectCustomers } from './selectors/cart-product.selectors';
-import { loadCartProducts } from './actions/cart-product.actions';
+import { selectProducts } from './selectors/cart-product.selectors';
+import { loadCartProducts, removeCartProducts } from './actions/cart-product.actions';
 
 @Component({
   selector: 'app-root',
@@ -13,15 +13,21 @@ import { loadCartProducts } from './actions/cart-product.actions';
 })
 export class AppComponent {
   title = 'ngrx';
-  customers$: Observable<CartProduct[]>;
+  products$: Observable<CartProduct[]>;
   
   constructor(private store: Store<CartProductState>) {
-    this.customers$ = this.store.pipe(select(selectCustomers));
+    this.products$ = this.store.pipe(select(selectProducts));
   }
 
-  addCustomer(customerName: string): void {
-    const customer = new CartProduct();
-    customer.name = customerName;
-    this.store.dispatch(loadCartProducts(customer));
+  addProduct(productName: string): void {
+    const product = new CartProduct();
+    product.name = productName;
+    this.store.dispatch(loadCartProducts(product));
+  }
+
+  removeProduct(productName: string): void {
+    const product = new CartProduct();
+    product.name = productName;
+    this.store.dispatch(removeCartProducts(product));
   }
 }

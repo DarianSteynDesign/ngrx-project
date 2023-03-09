@@ -1,11 +1,11 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import * as fromCustomer from '../reducers/cart-product.reducer';
+import * as fromCart from '../reducers/cart-product.reducer';
 
-export const selectCustomerState = createFeatureSelector<fromCustomer.CartProductState>(
-    fromCustomer.cartProductFeatureKey
+export const selectCartState = createFeatureSelector<fromCart.CartProductState>(
+    fromCart.cartProductFeatureKey
 );
 
-export const selectCustomers = createSelector(
-    selectCustomerState,
-    (state: fromCustomer.CartProductState) => state.products
+export const selectProducts = createSelector(
+    selectCartState,
+    (state: fromCart.CartProductState) => state.products
 );
